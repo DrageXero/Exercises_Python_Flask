@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importar CSS de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Importar CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- Importar fuentes desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <!-- Importar archivo de estilo personalizado -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Bolsa de trabajo</title>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="content header">
+        <h2 class="title">CONOCE MÁS LA AUTOMOTRIZ</h2>
+        <p>
+            Fue fundada en 1929 por un piloto de autos de competición,
+            Enzo Lechini, bajo la denominación de Scuderia Lechini.
+            Empezó construyendo automóviles de competición para, más tarde,
+            comenzar fabricando coches deportivos y vehículos en serie de último
+            modelos altamente cotizados allá por 1947.
+        </p>
+        <div class="btn-home">
+            <a href="/vacantes_publicacion" class="btn">Saber más</a>
+        </div>
+    </header>
+    <div id="clear">
+
+    </div>
+    <!-- Sección 1 -->
+    <section class="content sau">
+        <br>
+        <p>Contamos con cinco unidades de negocio: Lamborghini, Maserati,
+            Porsche, Jaguar y Negocios Financieros,
+            componiendo una empresa sólida, que ofrece a sus colaboradores
+            estabilidad financiera y el orgullo de pertenecer a una empresa 100% Mexicana.
+        </p>
+        <div class="box-container">
+            <div class="box">
+                <img src="{{url_for('static', filename='imagenes/jaguar.jpg')}}" alt="Imagen" class="imagen imagen-movida">
+                <br>
+                <p></p>
+            </div>
+            <div class="box">
+                <img src="{{url_for('static', filename='imagenes/porshe.jpg')}}" alt="Imagen" class="imagen imagen-movida">
+                <br>
+                <p></p>
+            </div>
+            <div class="box">
+                <img src="{{url_for('static', filename='imagenes/lambo.png')}}" alt="Imagen" class="imagen imagen-movida">
+                <br>
+                <p></p>
+            </div>
+        </div>
+    </section>
+    <div id="clear"></div>
+
+    <!-- Sección 2 -->
+    <section class="content about">
+        <h2 class="title">FORMA PARTE DE NUESTRO EQUIPO</h2>
+        <p>Fomentamos el crecimiento de las personas que hacen de la automotriz
+            un mejor lugar para trabajar. En este sentido, diseñamos una
+            propuesta de valor con un conjunto integrado de servicios,
+            beneficios, instancias de desarrollo, reconocimiento, aprendizaje e innovación,
+            para atraer y retener el capital humano que valoramos.
+        </p>
+      
+    </section>
+
+    <!-- Sección 3 -->
+    <section class="content price">
+        <article class="contain">
+            <h2 class="title2">IMPACTO POSITIVO</h2>
+            <p>El equipo de trabajo ha sido siempre la clave de nuestro éxito.
+                En nuestra empresa te ofreceremos un excelente ambiente de
+                trabajo donde poder desarrollar todas tus capacidades para
+                crecer profesional y personalmente.
+            </p>
+        </article>
+    </section>
+
+    <!-- Sección 4 -->
+    <section class="content contact">
+        <h2 class="title">PRINCIPALES VENTAJAS DE TRABAJAR CON NOSOTROS</h2>
+        <h4>● Calidad del equipo</h4>
+        <p>Trabajar a lado de talentosos profesionales en un
+            ambiente dinámico y colaborativo; inspirarse
+            e inspirar a otros.</p>
+        <h4>● Crecimiento personal y profesional</h4>
+        <p>La oportunidad de desarrollarnos a través
+            de una formación de primer nivel, un trabajo
+            desafiante y competitivo.</p>
+        <h4>● Fortaleza y solidez</h4>
+        <p>Ser parte de una empresa líder global,
+            con presencia en más de 10 países clave,
+            que busca constantemente superarse a sí misma y reinventarse.</p>
+        <h4>● Respeto</h4>
+        <p>Trabajar para una organización que respeta
+            a sus empleados, a la sociedad y al medioambiente.</p>
+    </section>
+    
+    <!-- Scripts JS o cualquier otro contenido adicional -->
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/botones_enviar.css">
+<body style="background-color: #f0f0f0">
+
+AUTORIZACION DE REQUISICION
+
+<form class="row g-3"  action="/autorizacion_de_requisicivfvsddf/{{id}} " method="POST" >
+   <div class="col-md-12">
+      <label for="folio" class="form-label">Folio</label>
+      <input type="text" class="form-control" name="folio" id="folio" value="{{dat.1}}" readonly="readonly"></input>
+   </div>
+
+   <br>
+   <div class="col-md-6">
+      <label for="puestoJefeSup" class="form-label">Puesto Vacante</label>
+      <input type="text" class="form-control" name="puesto_cubrir" id="puesto_cubrir" value="{{dat.2}}" readonly="readonly"></input>
+   </div>
+
+   <div class="col-md-6">
+      <label for="prestaciones" class="form-label">Numero de Vacantes</label>
+      <input type="number" class="form-control" name="numerodevaca" id="numerodevaca" value="{{dat.3}}"  readonly="readonly"></input>
+   </div>
+
+   <div class="col-md-6">
+      <label for="puestoJefeSup" class="form-label">Revisado por:</label>
+      <input type="text" class="form-control" name="revisado" id="revisado"></input>
+   </div>
+
+   <div class="col-md-6">
+      <label for="jornada" class="form-label">Autorizada por:</label>
+      <input type="text" class="form-control" name="autorizado" id="autorizado"></input>
+   </div>
+
+    <div class="col-md-12">
+        <label for="puestoJefeSup" class="form-label">Nombre y puesto</label>
+        <input type="text" class="form-control" name="nombre_puesto" id="nombre_puesto"></input>
+    </div>
+    <center><a>
+      <br><br>
+      <button>
+         <span>Enviar Autorizacion</span>
+       </button>
+   </a> </center>
+    <br>
+    <br>
+  
+
+   
+  
+
+</form>
+</body>
+
+{% endblock %}

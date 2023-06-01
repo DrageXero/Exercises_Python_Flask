@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<body style="background-color: #f0f0f0">
+<link rel="stylesheet" href="../static/css/botones_enviar.css">
+<form class="row g-3" action="/publicacion_fagregar" method="POST">
+    <div class="col-md-12">
+       <label for="folio" class="form-label">Folio</label>
+       <input type="text" class="form-control" name="folio" id="folio" value="" readonly="readonly"></input>
+    </div>
+  
+    <br>
+    <div class="col-md-6">
+       <label for="puestoJefeSup" class="form-label">Puesto Vacante</label>
+       <input type="text" class="form-control" name="puesto_cubrir" id="puesto_cubrir" value="" readonly="readonly"></input>
+    </div>
+  
+    <div class="col-md-6">
+       <label for="prestaciones" class="form-label">Numero de Vacantes</label>
+       <input type="number" class="form-control" name="numerodevaca" id="numerodevaca" value=""  readonly="readonly"></input>
+    </div>
+
+     <div class="col-md-6">
+      <label for="idPublicado" class="form-label">Publicar en:</label>
+       <select  name="idPublicado" id="idPublicado" class = "form-select">
+           <option  selected="true" disabled="disabled">Elige...</option>
+            {%
+               for i in catAreas
+            %}
+               <option value="{{i.0}}">{{i.1}}</option>
+            {% endfor %}
+       </select>
+   </div>
+
+    <div class="col-md-3">
+        <label for="idArea" class="form-label">Fecha de inicio de la publicacion</label>
+        <input type="date" class="form-control" name="fecha_inicio_publicacion" id="fecha_inicio_publicacion"></input>
+     </div>
+    
+     <div class="col-md-3">
+      <label for="idArea" class="form-label">Fecha de de conclusion de la publicacion</label>
+      <input type="date" class="form-control" name="fecha_conclusion_publicacion" id="fecha_conclusion_publicacion"></input>
+    </div>
+
+    <center><a >
+      <br><br>
+      <button>
+         <span>Enviar Publicacion</span>
+       </button>
+   </a> </center>
+
+
+    
+</form>
+</body>
+
+
+
+
+    {% endblock %}

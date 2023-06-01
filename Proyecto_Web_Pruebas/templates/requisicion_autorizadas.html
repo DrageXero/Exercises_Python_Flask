@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+{% block content %}
+<body style="background-color: #f0f0f0">
+<link rel="stylesheet" href="../static/css/boton.css">
+<link rel="stylesheet" href="../static/css/boton_agregar.css">
+<link rel="stylesheet" href="../static/css/boton_borrar.css">
+<link rel="stylesheet" href="../static/css/boton_autorizar.css">
+<link rel="stylesheet" href="/static/css/estilo.css">
+<link rel="stylesheet" href="/static/css/estilotabla.css">
+
+<!--Parte de arriba de la tabla-->
+<table width="100%" border="1" cellpadding="0" bordercolor="#CD95D7">
+  <tbody>
+    <tr>
+      <td color="FFFFFF" bgcolor="#CD95D7" valign="top">
+        <center>
+          <h3>REQUISICIONES  AUTORIZADAS</h3>
+        </center>
+        <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+          <tr>
+            <td id="d">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span>Folio y puesto </span>
+               
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<!--registros-->
+<div class="table-container">
+<table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+  <tbody>
+    <tr>
+      <!--Color de atras de la tabla-->
+      <td color="FFFFFF" bgcolor="#CD95D7" valign="top">
+        <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+          <tbody>
+            {% for i in comentarios %}
+            <tr>
+              <td width="30%" style="color: #000;">{{i.1}}</td>
+              <td width="30%" style="color: #000;">{{i.2}}</td>
+              <td bgcolor="#CD95D7" width="10%">
+                <a href="/autorizadas_fdetalle/{{i.0}}">
+                  <center><button class="continue-application">
+                    <div>
+                        <div class="pencil"></div>
+                        <div class="folder">
+                            <div class="top">
+                                <svg viewBox="0 0 24 27">
+                                    <path d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z"></path>
+                                </svg>
+                            </div>
+                            <div class="paper"></div>
+                        </div>
+                    </div>
+                    Detalle
+                </button></center>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  
+  <!--final de registros-->
+</html>
+
+<h1><center>Detalle</center></h1>
+
+<form class="row g-3"  action="/autorizacion_de_requisicivfvsddf/{{id}} " method="GET" >
+  <div class="col-md-12">
+     <label for="folio" class="form-label">Folio</label>
+     <input type="text" class="form-control" name="folio" id="folio" value="{{dat.1}}" readonly="readonly"></input>
+  </div>
+
+  <br>
+  <div class="col-md-6">
+     <label for="puestoJefeSup" class="form-label">Puesto Vacante</label>
+     <input type="text" class="form-control" name="puesto_cubrir" id="puesto_cubrir" value="{{dat.3}}" readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-6">
+     <label for="prestaciones" class="form-label">Numero de Vacantes</label>
+     <input type="number" class="form-control" name="numerodevaca" id="numerodevaca" value="{{dat.7}}"  readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-6">
+    <label for="revisado" class="form-label">Revisado por:</label>
+    <input type="text" class="form-control" name="revisado" id="revisado" value="{{datos.0}}" readonly="readonly"></input>
+ </div>
+ 
+ <div class="col-md-6">
+    <label for="autorizado" class="form-label">Autorizado por:</label>
+    <input type="text" class="form-control" name="autorizado" id="autorizado" value="{{datos.1}}" readonly="readonly"></input>
+ </div>
+ 
+ <div class="col-md-12">
+    <label for="nombre_puesto" class="form-label">Nombre y puesto</label>
+    <input type="text" class="form-control" name="nombre_puesto" id="nombre_puesto" value="{{datos.2}}" readonly="readonly"></input>
+ </div>
+  
+   <br>
+   <br>
+ 
+ 
+
+</form>
+</body>
+
+
+
+    {% endblock %}

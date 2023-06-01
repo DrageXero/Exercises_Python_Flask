@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+<style>
+  /* Oculta la barra de desplazamiento horizontal */
+  body {
+    overflow-x: hidden;
+  }
+</style>
+
+{% block content %}
+<body style="background-color: #f0f0f0">
+<link rel="stylesheet" href="../static/css/boton.css">
+<link rel="stylesheet" href="../static/css/boton_agregar.css">
+<link rel="stylesheet" href="../static/css/boton_borrar.css">
+<link rel="stylesheet" href="../static/css/boton_autorizar.css">
+<link rel="stylesheet" href="/static/css/estilo.css">
+<link rel="stylesheet" href="/static/css/estilotabla.css">
+
+<!--Parte de arriba de la tabla-->
+<table width="100%" border="1" cellpadding="0" bordercolor="#CD95D7">
+  <tbody>
+    <tr>
+      <td color="FFFFFF" bgcolor="#CD95D7" valign="top">
+        <center>
+          <h3>REQUISICIONES PENDIENTES DE AUTORIZAR</h3>
+        </center>
+        <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+          <tr>
+            <td id="d">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span>Folio y nombre</span>
+             
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<!-- Registros -->
+<div class="table-container">
+  <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+    <tbody>
+      <tr>
+        <!-- Color de fondo de la tabla -->
+        <td color="FFFFFF" bgcolor="#CD95D7" valign="top">
+          <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+            <tbody>
+              {% for i in comentarios %}
+              <tr>
+                <td width="30%" style="color: #000;">{{i.1}}</td>
+                <td width="30%" style="color: #000;">{{i.2}}</td>
+                <td bgcolor="#CD95D7" width="10%">
+                  <a href="/requisicion_fdetalle/{{i.0}}">
+                    <center>
+                      <button class="continue-application">
+                        <div>
+                            <div class="pencil"></div>
+                            <div class="folder">
+                                <div class="top">
+                                    <svg viewBox="0 0 24 27">
+                                        <path d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="paper"></div>
+                            </div>
+                        </div>
+                        Detalle
+                      </button>
+                    </center>
+                  </a>
+                </td>
+                <td bgcolor="#CD95D7" width="10%">
+                  <a href="/autorizacion_de_requisicion/{{i.0}}">
+                    <center>
+                      <button class="buttonDownload">Autorizar</button>
+                    </center>
+                  </a>
+                </td>
+                <td bgcolor="#CD95D7" width="10%">
+                  <a href="/borrar/{{i.0}}">
+                    <center>
+                      <button class="button">
+                        <svg class="svgIcon" viewBox="0 0 448 512">
+                          <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path>
+                        </svg>
+                      </button>
+                    </center>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>
+  <h1><center>Detalle</center></h1>
+
+</h3>
+
+
+<!-- Agrega tu formulario aquí -->
+</body>
+</html>
+
+<form class="row g-3" action="/requisicion_fdetalle/" method="GET">
+  <div class="col-md-12">
+      <label for="folio" class="form-label">Folio</label>
+      <input type="text" class="form-control" name="folio" id="folio" value="{{dat.1}}" readonly="readonly"></input>
+  </div>
+
+  <br>
+
+  <div class="col-md-6">
+    <label for="idArea" class="form-label">Área que solicita</label>
+    <input type="text" class="form-control" name="idArea" id="idArea" value="{{catArea.1}}" readonly="readonly"></input>
+
+ </div>
+
+  <div class="col-md-6">
+      <label for="idArea" class="form-label">Fecha de Elaboración</label>
+      <input type="date" class="form-control" name="fecha_ela" id="fecha_ela" value="{{dat.2}}" readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-12">
+      <label for="puestoJefeSup" class="form-label">Puesto a cubrir</label>
+      <input type="text" class="form-control" name="puesto_cubrir" id="puesto_cubrir" value="{{dat.3}}"readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-12">
+      <label for="puestoJefeSup" class="form-label">Nombre y puesto de quien solicita</label>
+      <input type="text" class="form-control" name="nombre_solicita" id="nombre_solicita" value="{{dat.4}}" readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-6">
+      <label for="idArea" class="form-label">Fecha de Reclutamiento</label>
+      <input type="date" class="form-control" name="fecha_reclutamiento" id="fecha_reclutamiento" value="{{dat.5}}" readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-6">
+      <label for="idArea" class="form-label">Fecha de inicio Vacante</label>
+      <input type="date" class="form-control" name="fecha_inicio_vacante" id="fecha_inicio_vacante" value="{{dat.6}}" readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-6">
+      <label for="prestaciones" class="form-label">Número de Vacantes</label>
+      <input type="text" class="form-control" name="numerodevaca" id="numerodevaca" value="{{dat.7}}" readonly="readonly"></input>
+  </div>
+
+  <div class="col-md-6">
+      <label for="descripcionGeneral" class="form-label">Tipo de vacante</label>
+      <input type="text" class="form-control" name="tipo_vacante" id="tipo_vacante" value="{{dat.8}}" readonly="readonly"></input>
+  </div>
+
+
+  <div class="col-md-6">
+    <label for="idArea" class="form-label">Vacantes generadas por:</label>
+    <input type="text" class="form-control" name="idArea" id="idArea" value="{{catAreas.1}}" readonly="readonly"></input>
+
+ </div>
+  
+</form>
+</body>
+
+{% endblock %}

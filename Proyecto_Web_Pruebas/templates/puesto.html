@@ -1,0 +1,231 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<body style="background-color: #f0f0f0">
+<link rel="stylesheet" href="../static/css/boton.css">
+<link rel="stylesheet" href="../static/css/boton_agregar.css">
+<link rel="stylesheet" href="../static/css/boton_borrar.css">
+<link rel="stylesheet" href="/static/css/estilo.css">
+<link rel="stylesheet" href="/static/css/estilotabla.css">
+
+
+<!--Parte de arriba de la tabla-->
+  <table width="100%" border="0" cellpadding="0" bordercolor="#CD95D7">
+    <tbody>
+      <tr>
+        <td color="000000" bgcolor="#CD95D7" valign="top" >
+          <center><h3 >PUESTOS REGISTRADOS</h3></center>
+          <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+            <tr>
+              <td id="d">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span>Nombre del puesto</span>
+                    <a href="/puesto_agr">
+                      <button class="icon-btn add-btn">
+                        <div class="add-icon"></div>
+                        <div class="btn-txt">Agregar</div>
+                      </button>
+                    </a>             
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+
+<br>
+<!--registros-->
+    
+    <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+    <tbody>
+    <tr>
+
+    <!--Color de atras de la tabla-->
+    <td  color="000000" bgcolor="#CD95D7" valign="top">
+    
+    <table width="100%" border="1" cellpadding="0" bordercolor="#000000">
+     
+
+    <tbody>
+    
+        {% for i in pue %}
+        <tr>
+        <!--Para cambiar el tamano de la parte de los botones de detalle editar y borrr-->
+    
+        <td width="30%" style="color: #000;">
+          <!--Solo desaprece el registro y no la clumnaa-->
+          
+           {{i.1}}
+        
+
+        <td bgcolor="#CD95D7" width="5%">
+      <a href="/puesto_fdetalle/{{i.0}}">
+        <center><button class="continue-application">
+          <div>
+              <div class="pencil"></div>
+              <div class="folder">
+                  <div class="top">
+                      <svg viewBox="0 0 24 27">
+                          <path d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z"></path>
+                      </svg>
+                  </div>
+                  <div class="paper"></div>
+              </div>
+          </div>
+          Detalle
+      </button></center>
+    </a>
+        </td>
+        <!--boton editar -->
+        <td bgcolor="#CD95D7" width="5%">
+        <a href="/puesto_editar/{{i.0}}">
+        <center><button class="Btn">Editar
+            <svg class="svg" viewBox="0 0 512 512">
+              <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
+          </button></center>
+        </a>
+        </td>
+        <!--boton editar final-->
+        <!--boton borrar-->
+        <td bgcolor="#CD95D7" width="5%">
+        <a href="/puesto_borrar/{{i.0}}">
+          <center><button class="button">
+          <svg class="svgIcon" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
+        </button></center>
+        </a>   
+        </td>
+         <!--boton borrar final-->
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+  <!--final de registros-->
+
+<h3>
+    <CENTER> <b> Detalle: </b> </CENTER>
+
+</h3>
+<br>
+<br>
+
+<form class="row g-3"  action="/puesto_fdetalle/" method="GET" >
+   <div class="col-md-12">
+      <label for="nomPuesto" class="form-label">Nombre del Puesto</label>
+      <input type="text" class="form-control" name="nomPuesto" id="nomPuesto" value="{{dat.3}}" readonly="readonly"></input>
+   </div>
+   <br>
+   <div class="col-md-6">
+      <label for="codPuesto" class="form-label">Código de Puesto</label>
+      <input type="text" class="form-control" name="codPuesto" id="codPuesto" value="{{dat.1}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-6">
+      <label for="idArea" class="form-label">Área de adscripción</label>
+      <input type="text" class="form-control" name="idArea" id="idArea" value="{{catArea.1}}" readonly="readonly"></input>
+
+   </div>
+   <div class="col-md-12">
+      <label for="puestoJefeSup" class="form-label">Puesto del Jefe Superior</label>
+      <input type="text" class="form-control" name="puestoJefeSup" id="puestoJefeSup" value="{{dat.4}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-8">
+      <label for="jornada" class="form-label">Jornada</label>
+      <input type="text" class="form-control" name="jornada" id="jornada" value="{{dat.5}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-4">
+      <label for="remunMensual" class="form-label">Remuneración Mensual</label>
+      <input type="text" class="form-control" name="remunMensual" id="remunMensual" value="{{dat.6}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-12">
+      <label for="prestaciones" class="form-label">Prestaciones</label>
+      <input type="text" class="form-control" name="prestaciones" id="prestaciones" value="{{dat.7}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-12">
+      <label for="descripcionGeneral" class="form-label">Descripción General</label>
+      <input type="text" class="form-control" name="descripcionGeneral" id="descripcionGeneral" value="{{dat.8}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-12">
+       <label for="funciones" class="form-label">Funciones</label>
+       <input type="text" class="form-control" name="funciones" id="funciones" value="{{dat.9}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-4">
+       <label for="edad" class="form-label">Edad</label>
+       <input type="text" class="form-control" name="edad" id="edad" value="{{dat.10}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-4">
+       <label for="sexo" class="form-label">Sexo</label>
+       <input type="text" class="form-control" name="sexo" id="sexo" value="{{dat.11}}" readonly="readonly"></input>
+   </div>
+
+   <div class="col-md-4">
+       <label for="idEstadoCivil" class="form-label">Estado Civil</label>
+       <input type="text" class="form-control" name="idEstadoCivil" id="idEstadoCivil" value="{{catEdoCivil.1}}" readonly="readonly"></input>
+   </div>
+
+   <div class="col-md-4">
+       <label for="idEscolaridad" class="form-label">Escolaridad</label>
+       <input type="text" class="form-control" name="idEscolaridad" id="idEscolaridad" value="{{catEscolaridad.1}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-4">
+       <label for="idGradoAvance" class="form-label">Grado Avance</label>
+        <input type="text" class="form-control" name="idGradoAvance" id="idGradoAvance" value="{{catGradoAvance.1}}" readonly="readonly"></input>
+       </select>
+   </div>
+   <div class="col-md-4">
+       <label for="idCarrera" class="form-label">Carrera</label>
+        <input type="text" class="form-control" name="idCarrera" id="idCarrera" value="{{catCarrera.1}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-12">
+       <label for="experiencia" class="form-label">Experiencia</label>
+       <input type="text" class="form-control" name="experiencia" id="experiencia" value="{{dat.16}}" readonly="readonly"></input>
+   </div>
+   <div class="col-md-12">
+       <label for="conocimientos" class="form-label">Conocimientos</label>
+       <input type="text" class="form-control" name="conocimientos" id="conocimientos" value="{{dat.17}}" readonly="readonly"></input>
+
+    </div>
+    <div class="col-md-12">
+        <label for="manejoEquipo" class="form-label">ManejoEquipo</label>
+        <input type="text" class="form-control" name="manejoEquipo" id="manejoEquipo" value="{{dat.18}}" readonly="readonly"></input>
+    </div>
+    <div class="col-md-12">
+        <label for="reqFisicos" class="form-label">Requisitos Físicos</label>
+        <input type="text" class="form-control" name="reqFisicos" id="reqFisicos" value="{{dat.19}}" readonly="readonly"></input>
+    </div>
+    <div class="col-md-12">
+        <label for="reqPsicologicos" class="form-label">Requisitos Psicológicos</label>
+        <input type="text" class="form-control" name="reqPsicologicos" id="reqPsicologicos" value="{{dat.20}}" readonly="readonly"></input>
+    </div>
+    <div class="col-md-12">
+        <label for="responsabilidades" class="form-label">Responsabilidades</label>
+        <input type="text" class="form-control" name="responsabilidades" id="responsabilidades" value="{{dat.21}}" readonly="readonly"></input>
+    </div>
+    <div class="col-md-12">
+        <label for="condicionesTrabajo" class="form-label">Condiciones de Trabajo</label>
+        <input type="text" class="form-control" name="condicionesTrabajo" id="condicionesTrabajo" value="{{dat.22}}" readonly="readonly"></input>
+    </div>
+     <div class="col-6">
+        <span>Idiomas:</span>
+            {% for idio in catIdioma  %}
+                <input type="text" class="form-control" name="i{{idio.1}}" id="i{{idio.1}}" value="{{idio.2}}" readonly="readonly"></input>
+            {% endfor %}
+     </div>
+     <div class="col-6">
+       <span>Habilidades:</span>
+           {% for hab in catHabilidad %}
+                <input type="text" class="form-control" name="h{{hab.1}}" id="h{{hab.1}}" value="{{hab.2}}" readonly="readonly"></input>
+           {% endfor %}
+     </div>
+</form>
+</body>
+
+
+
+{% endblock %}

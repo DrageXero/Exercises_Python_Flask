@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/botones_enviar.css">
+<body style="background-color: #f0f0f0">
+
+
+<h1><center>SOLICITUD DE REQUESICION DE PERSONAL</center></h1>
+
+
+<form class="row g-3" action="/requisicion_fagrega2" method="POST">
+  <div class="col-md-12">
+     <label for="folio" class="form-label">Folio</label>
+     <input type="text" class="form-control" name="folio" id="folio"></input>
+  </div>
+
+  <br>
+  
+  <div class="col-md-6">
+    <label for="idArea" class="form-label">Área que solicita</label>
+     <select  name="idArea" id="idArea" class = "form-select">
+         <option  selected="true" disabled="disabled">Elige...</option>
+          {%
+             for i in catArea
+          %}
+             <option value="{{i.0}}">{{i.1}}</option>
+          {% endfor %}
+     </select>
+ </div>
+
+   <div class="col-md-6">
+      <label for="idArea" class="form-label">Fecha de Elaboracion</label>
+      <input type="date" class="form-control" name="fecha_ela" id="fecha_ela"></input>
+   </div>
+
+   <div class="col-md-6">
+    <label for="idArea" class="form-label">Fecha de inicio Vacante</label>
+    <input type="date" class="form-control" name="fecha_inicio_vacante" id="fecha_inicio_vacante"></input>
+ </div>
+
+ <div class="col-md-6">
+  <label for="idArea" class="form-label">Fecha de Reclutamiento</label>
+  <input type="date" class="form-control" name="fecha_reclutamiento" id="fecha_reclutamiento"></input>
+</div>
+
+   <div class="col-md-12">
+      <label for="puestoJefeSup" class="form-label">Puesto a cubrir</label>
+      <input type="text" class="form-control" name="puesto_cubrir" id="puesto_cubrir"></input>
+   </div>
+
+    <div class="col-md-12">
+        <label for="puestoJefeSup" class="form-label">Nombre y puesto de quien solicita</label>
+        <input type="text" class="form-control" name="nombre_solicita" id="nombre_solicita"></input>
+    </div>
+
+   <div class="col-md-6">
+      <label for="prestaciones" class="form-label">Numero de Vacantes</label>
+      <input type="text" class="form-control" name="numerodevaca" id="numerodevaca"></input>
+   </div>
+
+   <div class="col-md-6">
+      <label for="descripcionGeneral" class="form-label">Tipo de vacante</label>
+      <input type="text" class="form-control" name="tipo_vacante" id="tipo_vacante"></input>
+   </div>
+
+   <div class="col-md-6">
+      <label for="idVacantess" class="form-label">Vacantes generadas por:</label>
+       <select  name="idVacantess" id="idVacantess" class = "form-select">
+           <option  selected="true" disabled="disabled">Elige...</option>
+            {%
+               for i in catAreas
+            %}
+               <option value="{{i.0}}">{{i.1}}</option>
+            {% endfor %}
+       </select>
+   </div>
+
+<center><a href="/requisicion_pend">
+   <br><br>
+   <button>
+      <span>Enviar Solicitud</span>
+    </button>
+</a> </center>
+
+
+</form>
+</body>
+  
+
+{% endblock %}
