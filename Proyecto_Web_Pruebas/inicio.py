@@ -354,54 +354,6 @@ def requisicion_publicacion_llenar():
 
     return render_template("publicacion_llenar.html", catArea=datos1, catAreas=datos6)
 
-""""
-
-@app.route('/requisicion_fdetalle/<string:idr>', methods=['GET'])
-def requisicion_fdetalle(idr):
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='rh3')
-    cursor = conn.cursor()
-
-    cursor.execute('SELECT idrequisicion, folio, puesto_cubrir FROM agregar_requisicion where estado=0 ORDER BY idrequisicion')
-    datos = cursor.fetchall()
-
-    cursor.execute('SELECT idrequisicion, folio, fecha_ela, puesto_cubrir, nombre_solicita, fecha_reclutamiento, fecha_inicio_vacante, numerodevaca, tipo_vacante FROM agregar_requisicion WHERE idrequisicion = %s', (idr,))
-    dato = cursor.fetchall()
-
-    cursor.execute('select a.idArea, a.descripcion from area a, agregar_requisicion b where a.idArea = b.idArea and b.idrequisicion = %s', (idr))
-    datos1 = cursor.fetchall()
-
-    cursor.execute('select a.idVacantess, a.descripcion from vacante a, agregar_requisicion b where a.idVacantess = b.idVacantess and b.idrequisicion = %s', (idr))
-    datos6 = cursor.fetchall()
-
-    return render_template("requisicion_pend.html", comentarios=datos, dat=dato[0], catArea=datos1[0],catAreas=datos6[0])
-
-
-@app.route('/requisicion_pend')
-def requisicion_pend():
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='rh3')
-    cursor = conn.cursor()
-
-    cursor.execute('SELECT  idrequisicion, folio,puesto_cubrir FROM agregar_requisicion where estado=0 ORDER BY idrequisicion')
-    datos = cursor.fetchall()
-    conn.close()
-
-    return render_template("requisicion_pend.html", comentarios=datos, dat='   ', catArea = '   ',  catAreas = '   ')
-
-
-@app.route('/requisicion_agregar')
-def agregar_combo():
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='rh3')
-    cursor = conn.cursor()
-    cursor.execute('select idArea, descripcion from area ')
-    datos1 = cursor.fetchall()
-
-    cursor.execute('select idVacantess, descripcion from vacante ')
-    datos6 = cursor.fetchall()
-
-    return render_template("requisicion_agregar.html", catArea=datos1, catAreas=datos6)
-"""
-
-
 "Catalogo estado civil"
 
 @app.route('/estadocivil')
@@ -968,83 +920,6 @@ def puesto_fedita(idP):
             conn.commit()
     return redirect(url_for('puesto'))
 
-"""
-
-#BASE DE DATOS 1 CAPTURA
-
-@app.route('/requisicion_fdetalle/<string:idR>', methods=['GET'])
-def requisicion_fdetalle(idR):
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='rh3')
-    cursor = conn.cursor()
-    cursor.execute(
-        'select a.idRequisicion, a.folio, b.nomPuesto from requisicion a, puesto b where a.idPuesto = b.idPuesto and a.autorizada = 0')
-    datos = cursor.fetchall()
-
-    cursor.execute(
-        'select a.idRequisicion, a.folio, a.fechaElab, a.fecharecluta, a.fechaInicVac, a.numVacantes, a.motivoRequisicion, a.motivoEspecifique, a.tipoVacante,'
-        'a.nomSSolicita, b.nomPuesto, b.puestoJefeSup, b.jornada, b.remunMensual, b.edad, b.sexo, b.descripcionGenerla, b.funciones'
-        ' from requisicion a, puesto b where a.idPuesto = b.idPuesto and a.idRequisicion = %s', idR)
-    dato = cursor.fetchall()
-    
-    cursor.execute(
-        'select b.descripcion, from requisicion a, area b where a.idArea = b.idArea and a.idRequisicion  = %s', idR)
-    datos1 = cursor.fetchall()
-
-    cursor.execute(
-        'select c.descripcion, from requisicion a, puesto b, estado_civil c where a.idPuesto = b.idPuesto and'
-        ' b.idEstadoCivil = c.idEstadoCivil and a.idRequisicion = %s', idR)
-    datos2 = cursor.fetchall()
-
-    cursor.execute(
-        'select c.descripcion, from requisicion a, puesto b, escolaridad c where a.idPuesto = b.idPuesto and'
-        ' b.idEscolaridad = c.idEscolaridad and a.idRequisicion = %s', idR)
-    datos3 = cursor.fetchall()
-
-    cursor.execute(
-        'select c.descripcion, from requisicion a, puesto b, area c where a.idPuesto = b.idPuesto and'
-        ' b.idArea = c.idArea and a.idRequisicion = %s', idR)
-    datos4 = cursor.fetchall()
-
-    return render_template("requisicion_pend.html", requi = datos, dat = dato[0], areaReq = datos1[0], edoCiv = datos2[0],
-                           esco = datos3[0], areaPue = datos4[0])
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-@app.route('/requisicion')
-def requisicion():
-    return render_template("requisicion.html")
-
-@app.route('/requisicion_agregar')
-def requisicion_agregar():
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='rh3')
-    cursor = conn.cursor()
-
-    cursor.execute('select idArea, descripcion from area')
-    datos1 = cursor.fetchall()
-
-    cursor.execute('select idPuesto, nomPuesto from puesto')
-    datos2 = cursor.fetchall())
-
-    return render_template("requisicion_agr.html" , catArea = datos1, puesto = datos2
-
-@app.route('/requisicion_fagrega', methods=['POST'])
-def requisicion_fagrega():
-    if request.method == 'POST':
-        fol = request.form['foilio']
-        feElab = request.form['fechaElaborac']
-        feRecl = request.form['fechaRecluta']
-        feIniV = request.form['fechaInicVacante']
-        nVac = request.form['numVacantes']
-        motR = request.form['motReq']
-        motE = request.form['motReqEsp']
-        tiVa = request.form['tipoVac']
-        nomS = request.form['nomSoli']
-        idPu = request.form['idPuesto']
-        idAr = request.form['idArea']
-
-        conn = pymysql.connect(host='localhost', user='root', passwd='', db='rh3')
-        cursor = conn.cursor()
-        cursor.execute
-"""
 
 @app.route('/requisicion_agregar')
 def requisicion_agregar():
@@ -1193,5 +1068,4 @@ def autorizada_fdetalle(idr):
 
 
 if __name__ == "__main__":
-    app.secret_key = "pinchellave"
     app.run(debug=True)
