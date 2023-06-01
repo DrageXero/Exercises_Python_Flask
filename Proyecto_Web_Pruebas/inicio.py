@@ -1068,4 +1068,5 @@ def autorizada_fdetalle(idr):
 
 
 if __name__ == "__main__":
+    app.secret_key = "Okei"
     app.run(debug=True)
