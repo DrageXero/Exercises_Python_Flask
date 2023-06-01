@@ -1,0 +1,45 @@
+th, td{
+
+border: solid 1px;
+padding: 10px;
+}
+
+tr:hover{
+    background-color: rgb(192, 192, 192);
+    color: white
+}
+
+tr:nth-child(even) {
+    background-color:  #FFFFFF
+}
+
+tr:nth-child(even):hover {
+    background-color: rgb(	213, 213, 213);;
+}
+
+#agregar{
+
+background-color: rgb(42, 32, 193);
+}
+
+#tabblaarriba{
+
+    background-color: aqua;
+}
+
+
+/*css de la parte de arriba de la tabla*/
+#d{
+    
+    background-color: #FFFFFF
+}
+
+#d:hover{
+
+    background-color: rgb(192, 192, 192);
+}
+
+#texto{
+
+   margin-right: 10px;
+}
